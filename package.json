@@ -1,16 +1,16 @@
 {
-    "name": "anki-hub",
+    "name": "anki-to-markdown",
     "version": "0.0.1",
-    "description": "Anki Hub",
+    "description": "Anki to Markdown tool",
     "main": "src/index.ts",
     "scripts": {
         "dev": "ts-node-dev src/index.ts",
-        "lint": "eslint '**/*.{js,ts}'",
-        "lint:fix": "eslint --fix '**/*.{js,ts}'",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
         "test": "jest ."
     },
-    "author": "",
-    "license": "ISC",
+    "author": "HriGunov",
+    "license": "MIT",
     "devDependencies": {
         "@biomejs/biome": "1.6.2",
         "@jest/globals": "^29.7.0",
