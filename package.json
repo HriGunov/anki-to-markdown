@@ -3,7 +3,10 @@
     "version": "0.0.1",
     "description": "Anki to Markdown tool",
     "main": "src/index.ts",
+    "type": "module",
     "scripts": {
+        "start": "node --experimental-specifier-resolution=node --loader ts-node/esm src/index.ts",
+        "devRun": "nodemon --exec node --experimental-specifier-resolution=node --loader ts-node/esm src/index.ts",
         "dev": "ts-node-dev src/index.ts",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
@@ -32,7 +35,12 @@
     "dependencies": {
         "@types/node-fetch": "^2.6.11",
         "mock-fs": "^5.2.0",
+        "nodemon": "^3.1.0",
+        "rehype-parse": "^9.0.0",
+        "rehype-remark": "^10.0.0",
+        "remark-stringify": "^11.0.0",
         "ts-node-dev": "^2.0.0",
-        "ts-results": "^3.3.0"
+        "ts-results": "^3.3.0",
+        "ts-results-es": "^4.1.0"
     }
 }

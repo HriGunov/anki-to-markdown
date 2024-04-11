@@ -1,4 +1,4 @@
-import { Err } from "ts-results";
+import { Err } from "ts-results-es";
 import { AnkiIntegrationProvider } from "../providers/anki-integration-provider";
 import { createDeckFolderStructure, exportAnkiNoteToDeck } from "../utils/exportUtils";
 import path from "path";
@@ -9,23 +9,23 @@ export class AnkiService {
 
         const decksResult = await ankiIntegrationProvider.getAllDecksNames();
 
-        if (decksResult.err) {
-            console.error(decksResult.val);
+        if (decksResult.isErr()) {
+            console.error(decksResult.error);
 
             return Err("Error getting deck names");
         }
 
-        createDeckFolderStructure(decksResult.val);
+        createDeckFolderStructure(decksResult.value);
 
         const notesResults = await ankiIntegrationProvider.getAllNotes();
 
-        if (notesResults.err) {
-            console.error(notesResults.val);
+        if (notesResults.isErr()) {
+            console.error(notesResults.error);
 
             return Err("Error getting notes");
         }
 
-        notesResults.val.forEach((note) => {
+        notesResults.value.forEach((note) => {
             exportAnkiNoteToDeck(note, path.normalize(process.cwd() + "/decks/"));
         });
     }
