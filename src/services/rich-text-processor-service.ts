@@ -2,12 +2,14 @@ import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 import rehypeRemark from "rehype-remark";
 import remarkStringify from "remark-stringify";
+import remarkGfm from "remark-gfm";
 import { Err, Ok } from "ts-results-es";
 
 class RichTextProcessorService {
     private processor = unified()
         .use(rehypeParse) // Parse HTML to a syntax tree
         .use(rehypeRemark) // Turn HTML syntax tree to markdown syntax tree
+        .use(remarkGfm) // Enable GitHub Flavored Markdown
         .use(remarkStringify); // Serialize HTML syntax tree
 
     constructor() {}

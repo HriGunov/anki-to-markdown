@@ -112,7 +112,7 @@ describe("exportAnkiNoteToDeck", () => {
             exportAnkiNoteToDeck(note, path.normalize(cwd() + "/decks/"));
             const deckPath = note.deckName.split("::").join("/");
 
-            expect(fs.existsSync(`./decks/${deckPath}/${note.noteId}.json`)).toBe(true);
+            expect(fs.existsSync(`./decks/${deckPath}/${note.noteId}.md`)).toBe(true);
         });
     });
 });
