@@ -14,7 +14,7 @@ class RichTextProcessorService {
 
     constructor() {}
 
-    convertHtmlToMarkdown(html: string) {
+    async convertHtmlToMarkdown(html: string) {
         return this.processor
             .process(html)
             .then((file) => Ok(String(file)))

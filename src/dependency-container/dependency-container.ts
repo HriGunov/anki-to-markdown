@@ -7,7 +7,7 @@ import { AnkiIntegrationProvider } from "../providers/anki-integration-provider"
 const DIContainer = new AsyncLocalStorage();
 
 const serviceFactories = {
-    createAnkiService: () => new AnkiIntegrationService(),
+    createAnkiIntegrationService: () => new AnkiIntegrationService(),
     createRichTextProcessorService: () => new RichTextProcessorService(),
 };
 

@@ -1,4 +1,4 @@
-import { describe, expect, test, afterEach } from "@jest/globals";
+import { describe, expect, test, afterEach } from "vitest";
 import { createDeckFolderStructure, exportAnkiNoteToDeck } from "./exportUtils";
 import fsMock from "mock-fs";
 import fs from "fs";
@@ -48,18 +48,6 @@ describe("createDeckFolderStructure", () => {
 describe("exportAnkiNoteToDeck", () => {
     afterEach(() => {
         fsMock.restore();
-    });
-
-    test("test ", () => {
-        const a = cwd();
-
-        fsMock({
-            "./decks/": {},
-        });
-
-        const b = cwd();
-
-        expect(a).toBe(b);
     });
 
     test("should create deck folder structure", () => {
