@@ -9,8 +9,7 @@
         "module": "ES2022",
         "moduleResolution": "Bundler",
         "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "baseUrl": "."
+        "allowSyntheticDefaultImports": true
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts"]
