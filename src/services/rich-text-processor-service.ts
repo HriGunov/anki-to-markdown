@@ -5,12 +5,22 @@ import remarkStringify from "remark-stringify";
 import remarkGfm from "remark-gfm";
 import { Err, Ok } from "ts-results-es";
 
+//Override the default handler for <br> tag (https://github.github.com/gfm/#hard-line-break)
+const brHandler = () => {
+    return "\n";
+};
+
 class RichTextProcessorService {
     private processor = unified()
-        .use(rehypeParse) // Parse HTML to a syntax tree
+        .use(rehypeParse, {}) // Parse HTML to a syntax tree
         .use(rehypeRemark) // Turn HTML syntax tree to markdown syntax tree
         .use(remarkGfm) // Enable GitHub Flavored Markdown
-        .use(remarkStringify); // Serialize HTML syntax tree
+        .use(remarkStringify, {
+            handlers: {
+                break: brHandler,
+            },
+            tightDefinitions: true,
+        }); // Serialize HTML syntax tree
 
     constructor() {}
 

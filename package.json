@@ -6,8 +6,7 @@
     "type": "module",
     "scripts": {
         "start": "node --experimental-specifier-resolution=node --loader ts-node/esm src/index.ts",
-        "devRun": "nodemon --exec node --experimental-specifier-resolution=node --loader ts-node/esm src/index.ts",
-        "dev": "ts-node-dev src/index.ts",
+        "dev": "nodemon --exec node --experimental-specifier-resolution=node --loader ts-node/esm src/index.ts",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "test": "vitest"
@@ -41,8 +40,6 @@
         "rehype-remark": "^10.0.0",
         "remark-gfm": "^4.0.0",
         "remark-stringify": "^11.0.0",
-        "ts-node-dev": "^2.0.0",
-        "ts-results": "^3.3.0",
         "ts-results-es": "^4.1.0"
     }
 }

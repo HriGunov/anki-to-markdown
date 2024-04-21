@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(dependencyInjectionContainerMiddleware);
 
 app.get("/", (req, res) => {
-    res.send("Hello, World!");
+    res.send("<h1> DEV SERVER </h1> <p> intended to be used for testing only </p>");
 });
 
 app.get("/anki", (req, res) => {
@@ -82,6 +82,7 @@ app.get("/anki/notes", async (req, res) => {
         res.status(500).send("Error getting notes");
     }
 });
+
 app.get("/anki/decks", async (req, res) => {
     try {
         const ankiIntegrationProvider = new AnkiIntegrationProvider();
@@ -102,9 +103,9 @@ app.get("/anki/sync", async (req, res) => {
     const ankiService = new AnkiIntegrationService();
     await ankiService.syncNotes();
 
-    res.status(202).send("Syncing notes...");
+    res.status(202).send(`Notes Synced - ${new Date().toISOString()}`);
 });
 
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}.`);
+    console.log(`Dev Server listening for actions on port ${port}.`);
 });
