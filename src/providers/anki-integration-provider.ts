@@ -1,6 +1,6 @@
-import { Err, Ok, Result } from "ts-results";
 import { ANKI_CONNECT_URL } from "../config";
 import { IAnkiNote } from "../contracts/anki";
+import { Ok, Err, Result } from "ts-results-es";
 
 type AnkiRequestResultType<T> = {
     error: string | null;

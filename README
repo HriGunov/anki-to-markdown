@@ -1,0 +1,11 @@
+## Project: Anki Markdown Sync
+
+This projects aims to solve the problem of using a markdown based system for Knowledge Management, and Anki at the same time. The current approach is to use a markdown file as the source of truth, and to use Anki as only as a tool for spaced repetition.
+
+During normal Anki usage you will want to make corrections, like adding tags or making updating fields. This will lead to a divergence between the markdown file and the Anki database. When syncing the changes made in Anki will be lost, as the sync operation is one way (from markdown to Anki).
+
+This project aims to solve this problem by providing a way to sync the markdown file with the Anki database.
+
+## Requirements
+
+Running Anki with the AnkiConnect plugin installed. The plugin can be found [here](https://ankiweb.net/shared/info/2055492159).

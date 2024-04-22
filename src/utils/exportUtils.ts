@@ -19,7 +19,19 @@ const exportAnkiNoteToDeck = (note: IAnkiNote, deckDir: string = "./decks/"): vo
         createDeckFolderStructure([note.deckName], deckDir);
     }
 
-    fs.writeFileSync(path.normalize(`${deckDir}${deckPath}/${note.noteId}.json`), JSON.stringify(note));
+    const stringBuilder: string[] = [];
+    stringBuilder.push(`START\n`);
+    stringBuilder.push(`${note.modelName}\n`);
+    for (const field in note.fields) {
+        stringBuilder.push(`${field}:\n`);
+        stringBuilder.push(note.fields[field].value);
+    }
+
+    note.tags.length && stringBuilder.push(`TAGS: ${note.tags.join(" ")}\n`);
+    stringBuilder.push(`<!--^ID${note.noteId} -->\n`);
+    stringBuilder.push(`END\n`);
+
+    fs.writeFileSync(path.normalize(`${deckDir}${deckPath}/${note.noteId}.md`), stringBuilder.join(""));
 };
 
 export { createDeckFolderStructure, exportAnkiNoteToDeck };
