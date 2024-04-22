@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { AnkiIntegrationService } from "./anki-integration-service";
 import { DIContainer } from "../dependency-container/dependency-container";
 import { AnkiIntegrationProvider } from "../providers/anki-integration-provider";
