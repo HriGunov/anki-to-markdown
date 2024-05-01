@@ -21,12 +21,13 @@ const dependencyInjectionContainerMiddleware = (req: Request, res: Response, nex
         next();
     });
 };
-
-const getDIContext = async () => {
-    return DIContainer.getStore() as {
-        serviceFactories: typeof serviceFactories;
-        providersFactories: typeof providersFactories;
-    };
+type IDIContext = {
+    serviceFactories: typeof serviceFactories;
+    providersFactories: typeof providersFactories;
 };
 
-export { dependencyInjectionContainerMiddleware, getDIContext, DIContainer };
+const getDIContext = async () => {
+    return DIContainer.getStore() as IDIContext;
+};
+
+export { dependencyInjectionContainerMiddleware, getDIContext, DIContainer, IDIContext };
