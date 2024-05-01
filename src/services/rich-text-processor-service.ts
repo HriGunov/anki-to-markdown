@@ -10,6 +10,10 @@ const brHandler = () => {
     return "\n";
 };
 
+type IOptions = {
+    stripObsidianAppLinkURLs: boolean;
+};
+
 class RichTextProcessorService {
     private processor = unified()
         .use(rehypeParse, {}) // Parse HTML to a syntax tree
@@ -22,16 +26,28 @@ class RichTextProcessorService {
             tightDefinitions: true,
         }); // Serialize HTML syntax tree
 
-    constructor() {}
+    constructor(private options: IOptions = { stripObsidianAppLinkURLs: true }) {}
 
     async convertHtmlToMarkdown(html: string) {
         return this.processor
             .process(html)
-            .then((file) => Ok(String(file)))
+            .then((file) => {
+                let markdown = String(file);
+                if (this.options.stripObsidianAppLinkURLs) {
+                    markdown = this.removeObsidianAppLinkArtifact(markdown);
+                }
+
+                return Ok(markdown);
+            })
             .catch((error) => {
                 console.error("Error while converting HTML to Markdown", error);
                 return Err("Error while converting HTML to Markdown");
             });
+    }
+
+    removeObsidianAppLinkArtifact(markdown: string) {
+        const res = markdown.replace(/\n\[Obsidian\]\(obsidian:\/\/open\?vault=(.+?)\)/g, "");
+        return res;
     }
 }
 export { RichTextProcessorService };
